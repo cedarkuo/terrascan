@@ -79,6 +79,11 @@ class TestLoggingAndMonitoring(unittest.TestCase):
             'cloudwatch_logging_options').property(
             'enabled').should_equal(True)
 
+    def test_aws_lb_logging(self):
+        self.v.resources(
+            'aws_lb').should_have_properties(
+            ['access_logs'])
+
     def test_aws_redshift_cluster_logging(self):
         self.v.enable_variable_expansion()
         self.v.error_if_property_missing()
